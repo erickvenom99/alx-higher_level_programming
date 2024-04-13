@@ -1,6 +1,19 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class."""
+"""Module for Defining a Rectangle class."""
+
+
 class Rectangle:
+    """A class to represent a rectangle.
+
+    Attributes:
+        __width (int): The width of the rectangle, defaults to 0.
+        __height (int): The height of the rectangle, defaults to 0.
+
+    Methods:
+        area(): Returns the area of the rectangle.
+        perimeter(): Returns the perimeter of the rectangle.
+    """
+
     def __init__(self, width=0, height=0):
         """Initialize a new Rectangle.
 
@@ -13,7 +26,7 @@ class Rectangle:
 
     @property
     def width(self):
-        """Get/set the width of the Rectangle."""
+        """Get or set the width of the Rectangle."""
         return self.__width
 
     @width.setter
@@ -26,7 +39,7 @@ class Rectangle:
 
     @property
     def height(self):
-        """Get/set the height of the Rectangle."""
+        """Get or set the height of the Rectangle."""
         return self.__height
 
     @height.setter
