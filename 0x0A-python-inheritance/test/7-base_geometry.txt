@@ -1,0 +1,60 @@
+This is a detailed text file for the BaseGeometry class.
+
+The BaseGeometry class is defined with the intention of being a base class for
+various geometric shapes. It includes methods that are common to all
+geometric shapes, such as area calculation and parameter validation.
+
+Class Definition:
+-----------------
+class BaseGeometry:
+    "Represents base geometry."
+
+    The class is named 'BaseGeometry' and represents the concept of a basic
+        geometric shape.
+
+Method Definitions:
+-------------------
+1. def area(self):
+    "Not yet implemented."
+
+    The 'area' method is supposed to calculate the area of a geometric shape.
+        However, in this base class, it's not implemented and serves as a
+	placeholder. When called, it raises an Exception to indicate that any
+	      subclass should implement this method.
+
+  Exception Raised:
+       - Exception: "area() is not implemented"
+	            This exception is raised to inform the user that the 'area'
+		    method needs to be implemented in a subclass.
+
+2. def integer_validator(self, name, value):
+    "Validate a parameter as an integer."
+
+    The 'integer_validator' method is a utility function that validates
+        whether a given parameter 'value' is an integer. It takes two arguments:
+	- name (str): The name of the parameter, used for identification
+		        in error message
+	- value (int): The parameter value that needs to be validated.
+
+    If the 'value' is not an integer, a TypeError is raised with a message
+        indicating which parameter is invalid.
+
+  Exceptions Raised:
+            - TypeError: If 'value' is not an integer, a TypeError is raised
+	    with a message "<name> must be an integer", where <name> is replaced
+	    with the actual name of the parameter.
+
+Usage:
+------
+The BaseGeometry class is intended to be used as a superclass for other
+geometric shape classes. These subclasses should provide their own
+implementation of the 'area' method and can utilize the 'integer_validator'
+method to ensure that parameters are of the correct type.
+
+Note:
+-----
+This class is a part of a larger module or application that deals with
+geometric shapes. It provides a foundation for consistent
+behavior and validation across various shapes.
+End of the detailed text file for the BaseGeometry class.
+"""
