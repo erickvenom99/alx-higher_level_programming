@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 
-"""Module to add command-line argument to a list and save them to JSON file."""
+"""Module to add command-line argument to a list and save them to JSON file.
+The module handles the case where the file doesn't exist by creating a new list
+and saving the arguments.It uses external functions to save to
+and load from a JSON file.
+"""
 
 
 import sys
