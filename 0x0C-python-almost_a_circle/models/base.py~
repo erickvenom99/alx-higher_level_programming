@@ -1,0 +1,149 @@
+#!/usr/bin/python3
+"""
+Defines a Model class called base
+"""
+
+import json
+import csv
+
+
+class Base:
+    __nb_objects = 0
+
+    def __init__(self, id=None):
+        if id is not None:
+            self.id = id
+        else:
+            Base.__nb_objects += 1
+            self.id = Base.__nb_objects
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """JSON representation of a string dictionary
+        Args:
+            list_dictionaries(list): a dictionary list
+        """
+        if list_dictionaries is None or list_dictionaries == []:
+            return "[]"
+        convert_json = json.dumps(list_dictionaries)
+
+        return convert_json
+
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """write a json string represation of list_objs to a file
+        Args:
+            list_objs (list): list inherit Base
+        """
+        file_name = "{}.json".format(cls.__name__)
+
+        with open(file_name, "w") as jsonf:
+            if list_objs is None:
+                jsonf.write("[]")
+            else:
+                new_dict = []
+                for obj in list_objs:
+                    new_dict.append(obj.to_dictionary())
+                jsonf.write(Base.to_json_string(new_dict))
+
+    def from_json_string(json_string):
+        """Return string representation of json_string
+        Args:
+             json_string (list): a list of dictionary
+        """
+        if json_string is None or json_string == "[]":
+            return []
+        convert_dict = json.loads(json_string)
+        return convert_dict
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Return an instace with attribute set
+
+        """
+        if dictionary and dictionary != []:
+            if cls.__name__ == "Rectangle":
+                dummy = cls(1, 1)
+            else:
+                dummy = cls(1)
+            dummy.update(**dictionary)
+
+            return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """Returns a list of instances
+
+        """
+        file_name = "{}.json".format(cls.__name__)
+
+        try:
+            with open(file_name, "r") as jsonf:
+                dict_list = Base.from_json_string(jsonf.read())
+                list_instance = []
+
+                for i in dict_list:
+                    list_instance.append(cls.create(**i))
+                return list_instance
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        write the csv serialization of a list of objects
+        """
+        file_name = "{}.json".format(cls.__name__)
+
+        with open(file_name, "w") as csvfile:
+            if list_objs is None or list_objs == []:
+                csvfile.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    field_name = ["id", "width", "height", "x", "y"]
+                else:
+                    field_name = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csvfile, fieldnames=field_name)
+            for obj in list_objs:
+                writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        write a class instantialted by a list of csv
+        """
+        file_name = "{}.json".format(cls.__name__)
+
+        try:
+            with open(file_name, "r") as csvfile:
+                if cls.__name__ == "Rectangle":
+                    filedname = ["id", "width", "height", "x", "y"]
+                else:
+                    filedname = ["id", "size", "x", "y"]
+                list_dict = csv.DictReader(csvfile, fieldnames=filedname)
+
+                new_list_dicts = []
+
+                convert_dict = {}
+
+                for i in list_dict:
+                    for key, value in i.items():
+                        converted_dict[key] = int(value)
+
+                    new_list_dicts.append(converted_dict)
+
+                list_dict = new_list_dicts
+
+                list_of_instances = []
+
+                for i in list_dict:
+                    list_of_instances.append(cls.create(**i))
+
+                return list_of_instances
+        except FileNotFoundError:
+            return []
+
+
+if __name__ == "__main__":
+
+    pass
