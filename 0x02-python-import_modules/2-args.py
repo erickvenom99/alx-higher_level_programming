@@ -8,13 +8,9 @@ if __name__ == "__main__":
     arguments = sys.argv[1:]
     num_arg = len(arguments)
 
-    print("Number of argument(s):", num_arg)
-    if num_arg == 0:
-        print(".", end="")
-    elif num_arg == 1:
-        print("Argument:")
-        print("1:", arguments[0])
-    else:
-        print("Arguments:")
+    print("1 argument:" if num_arg == 1 else "Number of argument(s):",
+          num_arg)
+
+    if num_arg > 0:
         for i, arg in enumerate(arguments, start=1):
             print(i, ":", arg)
