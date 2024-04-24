@@ -9,7 +9,7 @@ if __name__ == "__main__":
     num_arg = len(arguments)
 
     print("Number of argument(s):", num_arg)
-    if num_arg== 0:
+    if num_arg == 0:
         print(".", end="")
     elif num_arg == 1:
         print("Argument:")
