@@ -5,12 +5,13 @@ import sys
 
 if __name__ == "__main__":
     """Print the number of list arguments"""
-    arguments = sys.argv[1:]
-    num_arg = len(arguments)
+    num_args = len(sys.argv) - 1
 
-    print("1 argument:" if num_arg == 1 else "Number of argument(s):",
-          num_arg)
-
-    if num_arg > 0:
-        for i, arg in enumerate(arguments, start=1):
-            print("{}: {}".format(i, arg))
+    if num_args == 0:
+        print("{} arguments.".format(num_args))
+    elif num_args == 1:
+        print("{} argument:".format(num_args))
+    else:
+        print("{} arguments:".format(num_args))
+    for i in range(1, len(sys.argv)):
+        print("{}: {}".format(i, sys.argv[i]))
