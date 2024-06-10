@@ -19,10 +19,10 @@ that value is equivalent to using the ``+`` operator.
 ::
 
     >>> add_integer(5, -3)
-    -1
+    2
 
     >>> add_integer(8, -5)
-    -3
+    3
 
 The function also works with floating-point values.
 
@@ -92,7 +92,7 @@ printed for the first argument.
 
 ::
 
-    >>> add_integer("hi", "holberton")
+    >>> add_integer("hi", "eric")
         Traceback (most recent call last):
 	TypeError: a must be an integer
 
