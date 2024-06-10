@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 def add_integer(a, b=98):
     """
     Sums arguments a and b.
