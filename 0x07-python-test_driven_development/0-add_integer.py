@@ -1,5 +1,16 @@
 #!/usr/bin/python3
+"""
+This module provides functions for performing basic arithmetic operations.
 
+The main function in this module is `add_integer`, which takes two integers or
+floating-point numbers and returns their sum as an integer.
+
+Example usage:
+    >>> add_integer(5, 3)
+    8
+    >>> add_integer(2.5, 3.2)
+    5
+"""
 def add_integer(a, b=98):
     """
     Sums arguments a and b.
