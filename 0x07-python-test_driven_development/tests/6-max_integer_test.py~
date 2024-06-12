@@ -1,0 +1,38 @@
+#!usr/bin/python3
+""""
+MODULE FOR UNITTEST
+"""
+
+
+import unittest
+from .6-max_integer import max_integer
+
+class TestMaxInteger(unittest.TestCase):
+    """Unittests for the max_integer function."""
+
+    def test_empty_list(self):
+            """Test an empty list."""
+	            self.assertIsNone(max_integer([]))
+
+    def test_one_element(self):
+            """Test a list with one element."""
+	            self.assertEqual(max_integer([4]), 4)
+
+    def test_positive_integers(self):
+            """Test a list of positive integers."""
+	            self.assertEqual(max_integer([1, 2, 3, 8]), 8)
+
+    def test_negative_integers(self):
+            """Test a list of negative integers."""
+	            self.assertEqual(max_integer([-1, -2, -3, -4]), -1)
+
+    def test_mixed_integers(self):
+            """Test a list of mixed integers."""
+	            self.assertEqual(max_integer([1, -2, 3, -4]), 3)
+
+    def test_duplicates(self):
+            """Test a list with duplicate integers."""
+	            self.assertEqual(max_integer([1, 1, 2, 2]), 2)
+
+if __name__ == '__main__':
+    unittest.main()
