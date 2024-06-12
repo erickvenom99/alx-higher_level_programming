@@ -1,6 +1,13 @@
+#!usr/bin/python3
+"""
+Module prints text
+"""
+
+
 def text_indentation(text):
-        """
-    Prints a text with two new lines after each occurrence of ".", "?", and ":".
+    """
+    Prints a text with two new lines after each
+         occurrence of ".", "?", and ":".
 
     Args:
         text (str): The text to be indented.
@@ -11,16 +18,25 @@ def text_indentation(text):
     Returns:
         None
     """
-if not isinstance(text, str):
-    raise TypeError("text must be a string")
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
 
-indent_marks = [".", "?", ":"]
-parts = text.splitlines()
+    indent_marks = [".", "?", ":"]
+    lines = []
+    current = ""
 
-for part in parts:
-    part = part.strip()
-    if part[-1] in indent_marks:
-        print(part)
-        print()
-    else:
-        print(part)
+    for i, char in enumerate(text):
+        if char.isspace() and (i == 0 or text[i-1] in indent_marks):
+            continue
+        current += char
+        if char in indent_marks:
+            lines.append(current.strip())
+            lines.append("")
+            current = ""
+
+    if current:
+        lines.append(current.strip())
+
+    for i, line in enumerate(lines):
+        end = "\n" if i < len(lines) - 1 else ""
+        print(line, end=end)
