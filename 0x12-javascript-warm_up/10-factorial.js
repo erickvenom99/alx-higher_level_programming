@@ -1,6 +1,5 @@
-#!/usr/bin/env node
-const [, , num] = process.argv;
-
+#!/usr/bin/node
+const [, , n] = process.argv;
 function factorial (n) {
   if (n === 0 || n === 1) {
     return 1;
@@ -9,8 +8,8 @@ function factorial (n) {
   }
 }
 
-if (!isNaN(Number(num))) {
-  const result = factorial(num);
+if (!isNaN(Number(n))) {
+  const result = factorial(n);
   console.log(result);
 } else {
   console.log(1);
