@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 const argNum = process.argv.slice(2);
 if (argNum.length < 2) {
   console.log('0');
