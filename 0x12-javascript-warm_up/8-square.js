@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 const sumA = parseInt(process.argv[2]);
 const sumB = parseInt(process.argv[3]);
 

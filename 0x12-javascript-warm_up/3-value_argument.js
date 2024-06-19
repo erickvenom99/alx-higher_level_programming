@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-
+#!/usr/bin/node
 const message = process.argv[2];
 if (message) {
   console.log(message);

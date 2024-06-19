@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 const firstArg = process.argv[2];
 const myNumber = parseInt(firstArg);
 if (!isNaN(myNumber)) {

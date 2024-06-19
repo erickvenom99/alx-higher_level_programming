@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-
+#!/usr/bin/node
 const message = process.argv.length - 2;
 if (message === 0) {
   console.log('No argument');

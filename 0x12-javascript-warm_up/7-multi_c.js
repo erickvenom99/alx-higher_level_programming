@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 const argCount = process.argv[2];
 const x = parseInt(argCount);
 let i = 0;
