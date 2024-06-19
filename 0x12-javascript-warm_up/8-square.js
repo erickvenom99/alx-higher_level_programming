@@ -1,14 +1,14 @@
 #!/usr/bin/node
-const sumA = parseInt(process.argv[2]);
-const sumB = parseInt(process.argv[3]);
-
-function add (a, b) {
-  return a + b;
-}
-
-if (!isNaN(sumA) && !isNaN(sumB)) {
-  const result = add(sumA, sumB);
-  console.log(result);
+const sizeArg = process.argv[2];
+const size = Number(sizeArg);
+if (isNaN(size)) {
+  console.log('Missing size');
 } else {
-  console.log('NaN');
+  for (let i = 0; i < size; i++) {
+    let line = '';
+    for (let j = 0; j < size; j++) {
+      line += 'X';
+    }
+    console.log(line);
+  }
 }
