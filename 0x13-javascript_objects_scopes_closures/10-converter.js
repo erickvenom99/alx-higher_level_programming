@@ -11,5 +11,5 @@ exports.converter = function (base) {
       num = Math.floor(num / base);
     }
     return result;
-  };
+  }
 };
