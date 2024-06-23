@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module Display all values in the state
+Module  script that lists all cities from the database hbtn_0e_4_usa
 """
 
 import MySQLdb
@@ -9,15 +9,19 @@ import sys
 
 def fetch_allrow(cursor, state_name):
     """
-    Fetch all rows from the states table
+    Fetch city names from the cities table based on the provided state name.
     Args:
         cursor: MySQL cursor object.
         state_name: Name of the state to filter by.
     Returns:
-        List of tuples containing state information.
+        List of city names.
     """
-    sql_query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cursor.execute(sql_query, (state_name,))
+    cursor.execute("""
+        SELECT cities.name
+        FROM cities
+        INNER JOIN states ON states.id = cities.state_id
+        WHERE states.name = %s
+    """, (state_name,))
     all_states = cursor.fetchall()
     return all_states
 
@@ -39,8 +43,9 @@ if __name__ == '__main__':
 
         cursor = conn.cursor()
         rows = fetch_allrow(cursor, state_name)
-        for row in rows:
-            print(row)
+
+        city_names = [row[0] for row in rows]
+        print(*city_names, sep=", ")
 
     except MySQLdb.Error as e:
         print(f"Error: {e}")
