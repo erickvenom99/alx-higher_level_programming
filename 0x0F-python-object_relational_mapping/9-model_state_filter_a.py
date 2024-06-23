@@ -9,30 +9,27 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 
-comm_args = sys.argv
-if len(comm_args) != 4:
-    exit(1)
+if __name__ == "__main__":
+    comm_args = sys.argv
+    if len(comm_args) != 4:
+        exit(1)
 
-connection_string = 'mysql+mysqldb://{}:{}@localhost:3306/{}'
-engine = create_engine(
-    connection_string.format(
+    db_url = 'mysql+mysqldb://{}:{}@localhost/{}'.format(
         comm_args[1],
         comm_args[2],
         comm_args[3]
     )
-)
+    engine = create_engine(db_url)
 
-Session = sessionmaker(bind=engine)
-Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    states = (
+        session.query(State)
+        .filter(State.name.like('%a%'))
+        .order_by(State.id)
+        .all()
+    )
+    for state in states:
+        print("{}: {}".format(state.id, state.name))
 
-session = Session()
-states = (
-    session.query(State)
-    .filter(State.name.like('%a%'))
-    .order_by(State.id)
-    .all()
-)
-for state in states:
-    print("{}: {}".format(state.id, state.name))
-
-session.close()
+    session.close()
