@@ -24,11 +24,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-session = Session()
-states = session.query(State).filter(State.name == comm_args[4]).first()
-if states:
-    print("{}".format(states.id))
-else:
-    print("Not found")
-
-session.close()
+    state = session.query(State).filter(State.name == comm_args[4]).first()
+    if state:
+        print("{}".format(state.id))
+    else:
+        print("Not found")
+    session.close()
