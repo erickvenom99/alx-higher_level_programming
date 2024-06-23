@@ -11,7 +11,7 @@ def fetch_allrow(cursor, state_name):
     """Fetch all rows from the 'states' table \
     where the name matches the given state_name.
     """
-    sql_query = "SELECT * FROM states WHERE name LIKE BINARY = '{}' \
+    sql_query = "SELECT * FROM states WHERE name LIKE BINARY '{}' \
         ORDER BY states.id ASC".format(state_name)
     cursor.execute(sql_query)
     all_states = cursor.fetchall()
