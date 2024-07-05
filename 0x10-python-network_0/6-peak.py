@@ -17,7 +17,7 @@ def find_peak(list_of_integers):
     elif length == 1:
         return list_of_integers[0]
 
-    mid = length / 2
+    mid = length // 2
     peak = list_of_integers[mid]
     list_int = list_of_integers
 
