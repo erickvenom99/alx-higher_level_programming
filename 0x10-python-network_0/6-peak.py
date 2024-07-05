@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 """
- Module Defines a function toFinds the peak in an unordered list
+    Module Defines a function toFinds the peak in an unordered list
 """
 
 
 def find_peak(list_of_integers):
-    """
-    Functions find peak of unordered integers
-    """
+    """Functions find peak of unordered integers"""
     if not list_of_integers:
         return None
 
@@ -16,8 +14,10 @@ def find_peak(list_of_integers):
         return None
     elif length == 1:
         return list_of_integers[0]
-
-    mid = length // 2
+    elif length == 2:
+        return max(list_of_integers)
+    
+    mid = int(length / 2)
     peak = list_of_integers[mid]
     list_int = list_of_integers
 
