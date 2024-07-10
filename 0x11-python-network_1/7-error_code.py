@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Python script sends request to URL
-   Checks HTTP status codes and 
-   display the body of the response
+    Checks HTTP status codes and
+    display the body of the response
 """
 
 import requests
