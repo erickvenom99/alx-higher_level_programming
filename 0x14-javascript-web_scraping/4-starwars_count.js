@@ -1,5 +1,4 @@
-#!/usr/bin/env node
-
+#!/usr/bin/node
 /* script that prints the number of movies */
 let count = 0;
 const request = require('request');
