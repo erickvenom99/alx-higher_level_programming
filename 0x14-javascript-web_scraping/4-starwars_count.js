@@ -2,14 +2,13 @@
 /* script that prints the number of movies */
 let count = 0;
 const request = require('request');
-const url = 'https://swapi-api.alx-tools.com/api/films/';
+const url = process.argv[2];
 
 request(url, function (error, response, body) {
   if (error) throw error;
 
-  let film, character;
-  for (film of JSON.parse(body).results) {
-    for (character of film.characters) {
+  for (const film of JSON.parse(body).results) {
+    for (const character of film.characters) {
       if (character.endsWith('/18/')) {
         count++;
       }
