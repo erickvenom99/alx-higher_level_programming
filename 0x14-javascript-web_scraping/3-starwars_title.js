@@ -4,15 +4,11 @@
 const request = require('request');
 const movieNumber = process.argv[2];
 const movieEpisode = parseInt(movieNumber);
-const url = `https://swapi-api.alx-tools.com/api/films/${movieEpisode}`;
+const url = `http://swapi-api.hbtn.io/api/films/${movieEpisode}`;
 
-request(url, (error, response, body) => {
+request(url, function (error, response, body) {
   if (error) {
-    console.error('Error:', error);
-    return;
+    throw error;
   }
-
-  const movieDetails = JSON.parse(body);
-  const movieTitle = movieDetails.title;
-  console.log(`Title: ${movieTitle}`);
+  console.log(JSON.parse(body).title);
 });
